@@ -1,9 +1,9 @@
 import logging,traceback
 
 
-class CommandList:
+class Namespace:
     def __init__(self):
-        logging.debug(f"New CommandList Object: {self}")
+        logging.debug(f"New Namespace Object: {self}")
         self.commands = {}
 
     def addCommand(self, name, function):
@@ -28,9 +28,9 @@ class Command:
             self.args = command[1:]
         logging.debug(f"Resolve command: {command}")
 
-    def execute(self, commandlist):
+    def execute(self, namespace):
         try:
-            command = commandlist.getCommand(self.command)
+            command = namespace.getCommand(self.command)
             if command:
                 logging.debug(f"Run command: {command}")
                 return command(self.args, self.runtime)
@@ -51,7 +51,7 @@ class Runtime:
         self.vars = {}
         self.data = {}
         self.pointerdata = []
-        self.commandlist = CommandList()
+        self.namespace = Namespace()
         self.exitonerr = exitOnError
         self.globalChecker = []
         for _ in range(256):
@@ -66,7 +66,7 @@ class Runtime:
         for function in self.globalChecker:
             status= function(self,__command)
         cmd = Command(__command, self)
-        result = cmd.execute(self.commandlist)
+        result = cmd.execute(self.namespace)
         if result != 0:
             if self.exitonerr:
                 logging.fatal(f"Function {__command} execute failed. Exiting")

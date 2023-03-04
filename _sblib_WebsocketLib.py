@@ -108,10 +108,10 @@ def _wsClose(args,runtime):
     return runtime,0
 
 def init(runtime):
-    runtime.commandlist.addCommand("websocket",_createws)
-    runtime.commandlist.addCommand("ws.set",_setWsAttr)
-    runtime.commandlist.addCommand("ws.connect",_wsConn)
-    runtime.commandlist.addCommand("ws.send",_wsSend)
-    runtime.commandlist.addCommand("ws.recv",_wsRecv)
-    runtime.commandlist.addCommand("ws.close",_wsClose)
+    runtime.namespace.addCommand("websocket",_createws)
+    runtime.namespace.addCommand("ws.set",_setWsAttr)
+    runtime.namespace.addCommand("ws.connect",_wsConn)
+    runtime.namespace.addCommand("ws.send",_wsSend)
+    runtime.namespace.addCommand("ws.recv",_wsRecv)
+    runtime.namespace.addCommand("ws.close",_wsClose)
     return runtime

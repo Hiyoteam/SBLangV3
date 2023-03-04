@@ -32,5 +32,5 @@ def setAOfBtoC(args, runtime):
 
 def init(runtime):
     for i, j in [('obj|get', CIsGetAFromB), ('obj|set', setAOfBtoC), ('obj|fromjson', objFromJson), ('obj|tojson', objToJson)]:
-        runtime.commandlist.addCommand(i, j)
+        runtime.namespace.addCommand(i, j)
     return runtime

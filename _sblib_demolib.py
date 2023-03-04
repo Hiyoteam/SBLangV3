@@ -4,5 +4,5 @@ def hello_world(args, runtime):
 
 
 def init(runtime):
-    runtime.commandlist.addCommand("helloWorld", hello_world)
+    runtime.namespace.addCommand("helloWorld", hello_world)
     return runtime

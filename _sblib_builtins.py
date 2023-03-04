@@ -96,12 +96,12 @@ def comment(args,runtime):
     return 0
     
 def init(runtime):
-    runtime.commandlist.addCommand("out", out)
-    runtime.commandlist.addCommand("string", string)
-    runtime.commandlist.addCommand("import", import_)
-    runtime.commandlist.addCommand("define", define)
-    runtime.commandlist.addCommand("d", d_process)
-    runtime.commandlist.addCommand("call", callfun)
-    runtime.commandlist.addCommand("//",comment)
+    runtime.namespace.addCommand("out", out)
+    runtime.namespace.addCommand("string", string)
+    runtime.namespace.addCommand("import", import_)
+    runtime.namespace.addCommand("define", define)
+    runtime.namespace.addCommand("d", d_process)
+    runtime.namespace.addCommand("call", callfun)
+    runtime.namespace.addCommand("//",comment)
     runtime.globalChecker.append(checkD)
     return runtime

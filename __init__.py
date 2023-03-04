@@ -16,7 +16,7 @@ ws.close ws
 """.strip('\n')
 
 runtime = sblangv2.Runtime(False)
-runtime.commandlist.addCommand("import", _sblib_builtins.import_)
+runtime.namespace.addCommand("import", _sblib_builtins.import_)
 runtime.execute("import builtins")
 for command in commands.split('\n'):
     runtime.execute(command)
